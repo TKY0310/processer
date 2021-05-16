@@ -1,0 +1,61 @@
+/* (add32.fsl) */
+
+module add32 {
+   input     a: Bit(32)
+   input     b: Bit(32)
+   input   cin: Bit(1)
+   output  sum: Bit(32)
+   output cout: Bit(1)
+ 
+   val a0 = new add4
+   val a1 = new add4
+   val a2 = new add4
+   val a3 = new add4
+   val a4 = new add4
+   val a5 = new add4
+   val a6 = new add4
+   val a7 = new add4
+     
+	def add(a, b, cin): Unit = {
+ 		a0.add(a(3,0)  , b(3,0)  ,cin)
+ 		a1.add(a(7,4)  , b(7,4)  ,a0.co)
+ 		a2.add(a(11,8) , b(11,8) ,a1.co)
+ 		a3.add(a(15,12), b(15,12),a2.co)
+ 		a4.add(a(19,16), b(19,16),a3.co)
+ 		a5.add(a(23,20), b(23,20),a4.co)
+ 		a6.add(a(27,24), b(27,24),a5.co)
+ 		a7.add(a(31,28), b(31,28),a6.co)
+ 		
+ 		val t0 = a0.out
+ 		val(t1,c1) = (a1.out,a1.co)
+ 		val(t2,c2) = (a2.out,a2.co)
+ 		val(t3,c3) = (a3.out,a3.co)
+ 		val(t4,c4) = (a4.out,a4.co)
+ 		val(t5,c5) = (a5.out,a5.co)
+ 		val(t6,c6) = (a6.out,a6.co)
+ 		val(t7,c7) = (a7.out,a7.co)
+ 		
+ 		sum = t7 ++ t6 ++ t5 ++ t4 ++ t3 ++ t2 ++ t1 ++ t0
+	   	cout = a7.co
+   } // add
+} // module add32
+
+module add4 {
+   input    a: Bit(4)
+   input    b: Bit(4) 
+   input   ci: Bit(1) // carry-in
+   output out: Bit(4) // sum output
+   output  co: Bit(1) // carry-out
+   output  ov: Bit(1) // overflow
+  
+   def add(a, b, ci): Unit = {
+     val t1 = 0b0 ++ a              // 5ビットにビット拡張
+     val t2 = 0b0 ++ b              // 5ビットにビット拡張
+     val t3 = t1 + t2 + ci.toBit(5) // 加算
+     out = t3(3, 0)                 // t3 の第3ビットから第0ビットの4ビット
+     co  = t3(4)                    // t3 の第4ビット（MSB）
+     ov  = (~a.msb & ~b.msb & out.msb) | (a.msb & b.msb & ~out.msb)
+   } // def add
+ } // module add4
+/* End of file (add32.fsl) */
+

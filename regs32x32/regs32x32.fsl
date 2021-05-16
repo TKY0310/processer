@@ -1,0 +1,199 @@
+/* (regs32x32.fsl) */
+
+module regs32x32 {
+  input      in: Bit(32)
+  input in_addr: Bit(5)
+  input  a_addr: Bit(5)
+  input  b_addr: Bit(5)
+  output      a: Bit(32)
+  output      b: Bit(32)
+
+  reg reg0 : Bit(32)
+  reg reg1 : Bit(32)
+  reg reg2 : Bit(32)
+  reg reg3 : Bit(32)
+  reg reg4 : Bit(32)
+  reg reg5 : Bit(32)
+  reg reg6 : Bit(32)
+  reg reg7 : Bit(32)
+  reg reg8 : Bit(32)
+  reg reg9 : Bit(32)
+  reg reg10: Bit(32)
+  reg reg11: Bit(32)
+  reg reg12: Bit(32)
+  reg reg13: Bit(32)
+  reg reg14: Bit(32)
+  reg reg15: Bit(32)
+  reg reg16: Bit(32)
+  reg reg17: Bit(32)
+  reg reg18: Bit(32)
+  reg reg19: Bit(32)
+  reg reg20: Bit(32)
+  reg reg21: Bit(32)
+  reg reg22: Bit(32)
+  reg reg23: Bit(32)
+  reg reg24: Bit(32)
+  reg reg25: Bit(32)
+  reg reg26: Bit(32)
+  reg reg27: Bit(32)
+  reg reg28: Bit(32)
+  reg reg29: Bit(32)
+  reg reg30: Bit(32)
+  reg reg31: Bit(32)
+
+
+  def read_a(a_addr): Unit = {
+  	val v = a_addr match {
+      case 0b00000 => 0.toBit(32)
+      case 0b00001 => reg1
+      case 0b00010 => reg2
+      case 0b00011 => reg3
+      case 0b00100 => reg4
+      case 0b00101 => reg5
+      case 0b00110 => reg6
+      case 0b00111 => reg7
+      case 0b01000 => reg8
+      case 0b01001 => reg9
+      case 0b01010 => reg10
+      case 0b01011 => reg11
+      case 0b01100 => reg12
+      case 0b01101 => reg13
+      case 0b01110 => reg14
+      case 0b01111 => reg15
+      case 0b10000 => reg16
+      case 0b10001 => reg17
+      case 0b10010 => reg18
+      case 0b10011 => reg19
+      case 0b10100 => reg20
+      case 0b10101 => reg21
+      case 0b10110 => reg22
+      case 0b10111 => reg23
+      case 0b11000 => reg24
+      case 0b11001 => reg25
+      case 0b11010 => reg26
+      case 0b11011 => reg27
+      case 0b11100 => reg28
+      case 0b11101 => reg29
+      case 0b11110 => reg30
+      case 0b11111 => reg31
+    }
+    a = v
+  }
+
+  def read_b(b_addr): Unit = {
+    val v = b_addr match {
+      case 0b00000 => 0.toBit(32)
+      case 0b00001 => reg1
+      case 0b00010 => reg2
+      case 0b00011 => reg3
+      case 0b00100 => reg4
+      case 0b00101 => reg5
+      case 0b00110 => reg6
+      case 0b00111 => reg7
+      case 0b01000 => reg8
+      case 0b01001 => reg9
+      case 0b01010 => reg10
+      case 0b01011 => reg11
+      case 0b01100 => reg12
+      case 0b01101 => reg13
+      case 0b01110 => reg14
+      case 0b01111 => reg15
+      case 0b10000 => reg16
+      case 0b10001 => reg17
+      case 0b10010 => reg18
+      case 0b10011 => reg19
+      case 0b10100 => reg20
+      case 0b10101 => reg21
+      case 0b10110 => reg22
+      case 0b10111 => reg23
+      case 0b11000 => reg24
+      case 0b11001 => reg25
+      case 0b11010 => reg26
+      case 0b11011 => reg27
+      case 0b11100 => reg28
+      case 0b11101 => reg29
+      case 0b11110 => reg30
+      case 0b11111 => reg31
+    }
+    b = v
+  }
+  def write(in_addr, in): Unit = {
+  	in_addr match {
+      case 0b00000 => 0.toBit(32)
+      case 0b00001 => reg1 := in
+      case 0b00010 => reg2 := in
+      case 0b00011 => reg3 := in
+      case 0b00100 => reg4 := in
+      case 0b00101 => reg5 := in
+      case 0b00110 => reg6 := in
+      case 0b00111 => reg7 := in
+      case 0b01000 => reg8 := in
+      case 0b01001 => reg9 := in
+      case 0b01010 => reg10:= in
+      case 0b01011 => reg11:= in
+      case 0b01100 => reg12:= in
+      case 0b01101 => reg13:= in
+      case 0b01110 => reg14:= in
+      case 0b01111 => reg15:= in
+      case 0b10000 => reg16:= in
+      case 0b10001 => reg17:= in
+      case 0b10010 => reg18:= in
+      case 0b10011 => reg19:= in
+      case 0b10100 => reg20:= in
+      case 0b10101 => reg21:= in
+      case 0b10110 => reg22:= in
+      case 0b10111 => reg23:= in
+      case 0b11000 => reg24:= in
+      case 0b11001 => reg25:= in
+      case 0b11010 => reg26:= in
+      case 0b11011 => reg27:= in
+      case 0b11100 => reg28:= in
+      case 0b11101 => reg29:= in
+      case 0b11110 => reg30:= in
+      case 0b11111 => reg31:= in
+    }
+  }
+
+  def clear(): Unit = {
+  	reg0 := 0x00000000
+  	reg1 := 0x00000000
+  	reg2 := 0x00000000
+  	reg3 := 0x00000000
+  	reg4 := 0x00000000
+  	reg5 := 0x00000000
+  	reg6 := 0x00000000
+  	reg7 := 0x00000000
+  	reg8 := 0x00000000
+  	reg9 := 0x00000000
+  	reg10:= 0x00000000
+  	reg11:= 0x00000000
+  	reg12:= 0x00000000
+  	reg13:= 0x00000000
+  	reg14:= 0x00000000
+  	reg15:= 0x00000000
+  	reg16:= 0x00000000
+  	reg17:= 0x00000000
+  	reg18:= 0x00000000
+  	reg19:= 0x00000000
+  	reg20:= 0x00000000
+  	reg21:= 0x00000000
+  	reg22:= 0x00000000
+  	reg23:= 0x00000000
+  	reg24:= 0x00000000
+  	reg25:= 0x00000000
+  	reg26:= 0x00000000
+  	reg27:= 0x00000000
+  	reg28:= 0x00000000
+  	reg29:= 0x00000000
+  	reg30:= 0x00000000
+  	reg31:= 0x00000000
+  }
+}
+
+/* End of file (regs32x8.fsl) */
+
+
+ 
+
+
+

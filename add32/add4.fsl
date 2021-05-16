@@ -1,0 +1,17 @@
+module add4 {
+   input    a: Bit(4)
+   input    b: Bit(4) 
+   input   ci: Bit(1) // carry-in
+   output out: Bit(4) // sum output
+   output  co: Bit(1) // carry-out
+   output  ov: Bit(1) // overflow
+  
+   def add(a, b, ci): Unit = {
+     val t1 = 0b0 ++ a              // 5ビットにビット拡張
+     val t2 = 0b0 ++ b              // 5ビットにビット拡張
+     val t3 = t1 + t2 + ci.toBit(5) // 加算
+     out = t3(3, 0)                 // t3 の第3ビットから第0ビットの4ビット
+     co  = t3(4)                    // t3 の第4ビット（MSB）
+     ov  = (~a.msb & ~b.msb & out.msb) | (a.msb & b.msb & ~out.msb)
+   } // def add
+ } // module add4
